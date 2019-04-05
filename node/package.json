@@ -1,0 +1,29 @@
+{
+    "name": "Node",
+    "version": "1.0.0",
+    "scripts": {
+        "start": "nodemon app.js"
+    },
+    "dependencies": {
+        "body-parser": "^1.18.3",
+        "ckeditor": "^4.11.3",
+        "cookie-parser": "^1.4.4",
+        "ejs": "^2.6.1",
+        "express": "^4.16.4",
+        "express-ejs-layouts": "^2.5.0",
+        "express-session": "^1.15.6",
+        "i18n-nodejs": "^3.0.0",
+        "mysql": "^2.16.0",
+        "mysql-model": "0.0.3",
+        "node-model-validation": "^1.0.1",
+        "password-hash": "^1.2.2",
+        "pdf2html": "^2.4.0",
+        "pdftohtmljs": "^0.5.2",
+        "striptags": "^3.1.1",
+        "underscore": "^1.9.1",
+        "utf8": "^3.0.0"
+    },
+    "devDependencies": {
+        "javascript-state-machine": "^3.1.0"
+    }
+}

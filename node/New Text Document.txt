@@ -1,0 +1,21 @@
+<%=
+var Menus = require('../../app_server/models/menus'); 
+var _ = require("underscore"); var menu = new Menus(); 
+var menusList = []; 
+var menusTempList = [];
+menu.find('all', {where: "active = 1"}, function(err, result) {
+    if(result.length){
+        _.each(result,function(row) { 
+            menusTempList = [];  
+            menusTempList['url']  = row.url;
+            menusTempList['name']  = row.name;
+            menusList.push(userTempList);
+        });
+    } 
+}); 
+%>
+
+
+<% for(var i=0; i < menusList.length; i++) { %>
+                        <li><a href="<%menusList.url%>"><%menusList.name%></a></li> 
+                    <% } %>

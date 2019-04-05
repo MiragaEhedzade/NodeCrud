@@ -1,0 +1,7 @@
+{
+"name": "com.inbase.docedit",
+"description": "Document edit extension",
+"path": "UBHostDocEdit.exe",
+"type": "stdio",
+"allowed_origins": ["chrome-extension://pgffhmifenmomiabibdpnceahangimdi/"]
+}
