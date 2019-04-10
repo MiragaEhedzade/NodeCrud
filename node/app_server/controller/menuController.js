@@ -1,11 +1,8 @@
 var Menus = require('../../app_server/models/menus');
-var menusReference = require('../../app_server/modelReference/menus');
+ 
 var _ = require("underscore");
 var striptags = require('striptags');
- 
-const {validate} = require('node-model-validation')
-
-
+  
 module.exports.index = function (req,res) {  
     config.lang = req.originalUrl.split("/")[1];
     var i18n = new i18n_module(config.lang, config.langFile);
@@ -27,7 +24,7 @@ module.exports.index = function (req,res) {
   
     var getMenusList = function () {
         var promise = new Promise(function (resolve, reject) {
-            var menu = new Menus();
+            var menu = new Menus.menus();
             var menuList = [];
             var menuTempList = [];
             menu.find('all', {where: "active = 1"}, function(err, result) {
@@ -75,21 +72,23 @@ module.exports.create = function(req,res){
             create_time: Math.floor(new Date() / 1000),
             modify_time: Math.floor(new Date() / 1000)
         };
-        const referenceMenuModel = menusReference;
-     
-        let result = validate(menuValModel, referenceMenuModel)
-        if(result['errors'])
-            console.log(result['errors']);
-        else
+        const referenceMenuModel = Menus.referenceMenusModel;
+        
+        
+        menu = new Menus.menus(menuValModel); 
+        if(menu.validate(menuValModel, referenceMenuModel))
         {
-            menu = new Menus(menuValModel);
-            menu.save();
+            menu.save(); 
         } 
+        else
+        { 
+            console.log(result['errors']); 
+        }
         res.end(); 
     }
     var getMenusList = function () {
         var promise = new Promise(function (resolve, reject) {
-            var menu = new Menus();
+            var menu = new Menus.menus();
             var menuList = [];
             var menuTempList = [];
             menu.find('all', {where: "active = 1"}, function(err, result) {
@@ -122,7 +121,7 @@ module.exports.create = function(req,res){
 }
 
 module.exports.delete = function (req,res) {
-    var menu = new Menus();
+    var menu = new Menus.menus();
     menu.remove('id='+req.params.id)
     res.redirect('../../menus');
 }
