@@ -24,7 +24,7 @@ module.exports.index = function (req,res) {
   
     var getMenusList = function () {
         var promise = new Promise(function (resolve, reject) {
-            var menu = new Menus.menus();
+            var menu = new Menus();
             var menuList = [];
             var menuTempList = [];
             menu.find('all', {where: "active = 1"}, function(err, result) {
@@ -75,7 +75,7 @@ module.exports.create = function(req,res){
         const referenceMenuModel = Menus.referenceMenusModel;
         
         
-        menu = new Menus.menus(menuValModel); 
+        menu = new Menus(menuValModel); 
         if(menu.validate(menuValModel, referenceMenuModel))
         {
             menu.save(); 
@@ -88,7 +88,7 @@ module.exports.create = function(req,res){
     }
     var getMenusList = function () {
         var promise = new Promise(function (resolve, reject) {
-            var menu = new Menus.menus();
+            var menu = new Menus();
             var menuList = [];
             var menuTempList = [];
             menu.find('all', {where: "active = 1"}, function(err, result) {
@@ -121,7 +121,7 @@ module.exports.create = function(req,res){
 }
 
 module.exports.delete = function (req,res) {
-    var menu = new Menus.menus();
+    var menu = new Menus();
     menu.remove('id='+req.params.id)
     res.redirect('../../menus');
 }

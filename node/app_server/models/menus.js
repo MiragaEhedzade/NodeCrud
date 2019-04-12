@@ -1,13 +1,15 @@
 var mysqlModel = require('mysql-model');
+const config = require('../../config');
+
 var menusModel = mysqlModel.createConnection({
-    host     : 'localhost',
-    user     : 'root',
-    password : '',
-    database : 'node_test',
+    host     : config.db.host,
+    user     : config.db.user,
+    password : config.db.password,
+    database : config.db.database,
 });
 
 var menus = menusModel.extend({
-    tableName: "node_menus",
+    tableName: config.db.tablePrefix+"menus",
 });
 
 var referenceMenusModel = {
@@ -34,5 +36,5 @@ var referenceMenusModel = {
     },
 }
 
-module.exports.menus = menus
+module.exports = menus
 module.exports.referenceMenusModel = referenceMenusModel
