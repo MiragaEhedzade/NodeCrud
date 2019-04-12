@@ -1,8 +1,6 @@
 var Users = require('../../app_server/models/users');
-var Menus = require('../../app_server/models/menus');
-var usersReference = require('../../app_server/modelReference/users');
-var _ = require("underscore");
-const {validate} = require('node-model-validation')
+var Menus = require('../../app_server/models/menus'); 
+var _ = require("underscore"); 
 
  
 
@@ -125,21 +123,22 @@ module.exports.index = function (req,res) {
     
 module.exports.create = function (req,res) {
     const userValModel = {
-        user_name: 'Serenity2',
+        user_name: 'Serenity444',
         password: passwordHash.generate('1'),
         active: 1,
         create_time: Math.floor(new Date() / 1000),
         modify_time: Math.floor(new Date() / 1000)
     };
-    const referenceUserModel = usersReference;
+    const referenceUsersModel = Users.referenceUsersModel;
  
-    let result = validate(userValModel, referenceUserModel)
-    if(result['errors'])
-        console.log(result['errors']);
+    user = new Users(userValModel);
+    if(user.validate(userValModel, referenceUsersModel))
+    {
+        user.save();
+    }  
     else
     {
-        user = new Users(userValModel);
-        user.save();
+        console.log(result['errors']); 
     } 
     res.end();
 }

@@ -1,5 +1,4 @@
-var Menus = require('../../app_server/models/menus');
- 
+var Menus = require('../../app_server/models/menus'); 
 var _ = require("underscore");
 var striptags = require('striptags');
   

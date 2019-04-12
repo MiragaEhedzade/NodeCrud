@@ -10,7 +10,8 @@ const config = {
         tablePrefix: 'node_'    
     },
     tables : {
-         node_menus: "node_menus"   
+         node_menus: "node_menus",
+         node_users: "node_users"      
     }
 };
 
