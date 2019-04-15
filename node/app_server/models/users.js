@@ -1,5 +1,9 @@
 var mysqlModel = require('mysql-model');
+var path = require('path');
+
 const config = require('../../config');
+const filename = path.basename(__filename);
+const modelName = filename.substring(0, filename.indexOf('.js'));
 
 var usersModel = mysqlModel.createConnection({
     host     : config.db.host,
@@ -9,7 +13,7 @@ var usersModel = mysqlModel.createConnection({
 });
 
 var users = usersModel.extend({
-    tableName: config.db.tablePrefix+"users",
+    tableName: config.db.tablePrefix+modelName,
 });
 
 var referenceUsersModel = {
