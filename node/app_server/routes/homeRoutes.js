@@ -15,4 +15,6 @@ router.get('/index/page/delete/:id',ctrlHome.delete)
 router.get('/edit/:id',ctrlHome.edit)
 router.get('/index/page/edit/:id',ctrlHome.edit) 
 
+router.post('/allUsersAPI',ctrlHome.allUsersAPI)
+
 module.exports = router

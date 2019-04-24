@@ -13,7 +13,7 @@ var usersModel = mysqlModel.createConnection({
 });
 
 var users = usersModel.extend({
-    tableName: config.db.tablePrefix+modelName,
+    tableName: config.db.tablePrefix + modelName,
 });
 
 var referenceUsersModel = {

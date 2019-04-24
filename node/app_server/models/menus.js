@@ -13,7 +13,7 @@ var menusModel = mysqlModel.createConnection({
 });
 
 var menus = menusModel.extend({
-    tableName: config.db.tablePrefix+modelName,
+    tableName: config.db.tablePrefix + modelName,
 });
 
 var referenceMenusModel = {

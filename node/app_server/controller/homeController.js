@@ -186,3 +186,35 @@ module.exports.edit = function (req,res) {
 
     res.end();
 }
+
+module.exports.allUsersAPI = function(req,res){
+    var getUserList = function () {
+        var promise = new Promise(function (resolve, reject) {
+            var user = new Users();
+            var userList = [];
+            var userTempList = [];
+            user.find('all', {where: "active = 1"}, function(err, result) {
+                if(err)
+                {
+                    reject(err);
+                }
+                else
+                {
+                    if(result.length){
+                        userList =  result 
+                    } 
+                    else{
+
+                    } 
+                    resolve( userList ) 
+                } 
+            });    
+        })
+        return promise;
+    } 
+    getUserList().then(function success(result) { 
+        //res.setHeader('Content-Type', 'application/json')
+        res.json(result);
+        res.end()
+    }) 
+}
